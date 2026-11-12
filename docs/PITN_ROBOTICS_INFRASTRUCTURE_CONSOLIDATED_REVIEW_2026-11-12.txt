@@ -1,0 +1,723 @@
+POWER IN THE NUMBERS (PITN)
+CONSOLIDATED ROBOTICS INFRASTRUCTURE ECOSYSTEM REVIEW
+Strategic, Technical, Commercial and Development Reference
+Publication date: 12 November 2026
+Repository: https://github.com/PITN374/powerinthenumbers
+Founder: Aaron Bailot
+Contact: powerinthenumbers@pitn.ai
+
+======================================================================
+1. PURPOSE AND STATUS OF THIS DOCUMENT
+======================================================================
+
+This document consolidates the strategic thesis, ecosystem structure, public platform review, selected GitHub findings, commercial pathways, technical development considerations, market context, evidence requirements and recommended next steps for POWER IN THE NUMBERS (PITN).
+
+It is intended to serve as a durable, version-controlled reference in the PITN umbrella repository. It is written for prospective investors, robotics manufacturers, OEMs, system integrators, component suppliers, fleet operators, developers, researchers and strategic partners.
+
+This is a founder-led strategic and technical desk review based on public PITN websites, publicly accessible repository materials, selected project documentation, market research and management-provided representations available as of the publication date. It is not a financial audit, legal opinion, third-party technical certification, penetration test, valuation, or independent verification of every commercial or operational claim.
+
+Throughout this document, the following distinctions apply:
+
+DOCUMENTED: A concept, specification, architecture, repository artifact or public-facing page is available for inspection.
+
+PUBLICLY VISIBLE: A website or interface presents a feature, listing, workflow or commercial pathway. Visibility does not by itself prove backend operation or successful transactions.
+
+MANAGEMENT-REPORTED: A statement supplied by PITN management that has not been independently substantiated in this review.
+
+PROPOSED / IN DEVELOPMENT: A design objective, planned capability, roadmap item or described workflow for which complete operational implementation has not been established.
+
+REQUIRES VALIDATION: A claim or capability for which primary evidence, reproducible testing, contractual records or independent confirmation is still needed.
+
+The terms "architecture in place" and "infrastructure in place" refer to documented architecture and project structures unless a specific deployed implementation and its test evidence are identified. A documented design must not be represented as a production service solely because specifications or source files exist.
+
+======================================================================
+2. EXECUTIVE SUMMARY
+======================================================================
+
+POWER IN THE NUMBERS is developing an interconnected digital infrastructure ecosystem intended to support the identification, characterization, sourcing, integration and lifecycle management of components and intelligent machines within the robotics economy.
+
+The central thesis is that the expanding robotics industry will require connective infrastructure in addition to robots, controllers, sensors, actuators and software. Manufacturers, distributors, OEMs, integrators, operators and service organizations need reliable ways to identify components, reconcile identifiers, understand capabilities, evaluate compatibility, source replacements, maintain configuration records and preserve lifecycle information across organizational and software-system boundaries.
+
+PITN is pursuing this opportunity through a portfolio of related initiatives. ROBOPARTS.ai is the principal commercial entry point: a robotics component and fleet marketplace concept intended to connect component identities, product information, supplier relationships, bills of materials, RFQ activity and lifecycle records. ROBOTRAITS is intended to provide structured robot and component capability descriptions. ROBOTRONIC, ROBORECYCLE, ROBOAGENTIC and ROBOASI address complementary integration, circularity, agentic and autonomous-intelligence directions. Robotics-oriented Web2 and blockchain-based Web3 namespaces, including Humanoids.select and Cobots.select, form an additional identity and distribution layer.
+
+The public ecosystem has a market-facing presence, a published research reference, a set of technical repositories and documented architecture. The public ROBOPARTS interface displays component categories, example listings and RFQ / pilot pathways. The ROBOPARTS repository contains substantial architecture and implementation documentation. The ROBOTRAITS repository contains ontology and schema artifacts and limited code.
+
+The evidence reviewed does not establish that every advertised workflow is deployed in production, that every displayed supplier is contractually authorized, that a stated supplier cohort is independently verified, or that the full ROBOPARTS backend has completed production acceptance. Selected ROBOPARTS API/database materials are labelled untested, and implementation documentation describes foundational or planned work. These facts should be represented accurately in investor, customer and technical communications.
+
+PITN management represents that the business is already revenue-generating and that its commercial model is proven. This is a management representation. The public materials reviewed show namespace search and purchase pathways and ROBOPARTS inquiry / RFQ / pilot pathways, but do not independently establish revenue amounts, transaction volume, recurring revenue, customer contracts, margins or paid ROBOPARTS pilot outcomes. Revenue evidence should be maintained in a confidential diligence package.
+
+The strongest near-term strategy is to lead with ROBOPARTS, prove a narrowly scoped enterprise workflow with one customer and one component category, measure the result, and use the broader PITN portfolio to explain the long-term infrastructure opportunity.
+
+======================================================================
+3. THE PITN INFRASTRUCTURE THESIS
+======================================================================
+
+Robotics systems are assembled from physical components and software supplied, identified and managed by different organizations. A single component may appear in multiple systems under different identifiers, including:
+
+- Manufacturer part number
+- Manufacturer product or model number
+- Distributor SKU
+- OEM bill-of-material (BOM) reference
+- ERP material number
+- PLM item identifier
+- MES production or work-order reference
+- Customer asset identifier
+- Lot number
+- Serial number
+- Installation position
+- Maintenance or service record
+- Replacement or return reference
+
+These identifiers may refer to the same commercial product, a specific physical unit, an assembly position or an event in the component lifecycle. They are not interchangeable. A product identifier does not necessarily identify a physical instance; a BOM position does not prove which physical unit is installed; and a serial number should not be assumed globally unique without its issuing scheme.
+
+PITN's infrastructure thesis is to provide a persistent identity and relationship layer that can connect these references while allowing ERP, PLM, MES, inventory, procurement, asset-management and service systems to remain authoritative for the records they manage.
+
+The proposed value is continuity across:
+
+- Product definition and component classification
+- Manufacturer and distributor references
+- Physical-instance identity
+- Assembly and machine configuration
+- Supplier and procurement information
+- Installation, inspection and maintenance events
+- Replacement, refurbishment and end-of-life records
+- Capability descriptions and compatibility information
+- Digital representations and digital-twin systems
+- Future agentic systems that need governed access to trusted machine and component data
+
+PITN is not required to replace every existing enterprise system to create value. A practical integration layer can map and resolve references across existing systems, subject to customer authorization, data quality, integration agreements and security requirements.
+
+======================================================================
+4. ECOSYSTEM STRUCTURE AND PROJECT ROLES
+======================================================================
+
+4.1 POWER IN THE NUMBERS (PITN)
+
+PITN is the umbrella ecosystem and infrastructure initiative. It provides the overall strategic framework for robotics identity, component information, digital namespaces, knowledge structures and related commercial initiatives.
+
+Official website:
+https://www.powerinthenumbers.ai
+
+4.2 ROBOPARTS.ai
+
+ROBOPARTS is the principal near-term commercial product direction. It is intended to connect robotics components and their digital records to manufacturers, distributors, OEMs, integrators and operators.
+
+The public-facing concept includes:
+- Component and product discovery
+- Mapping of manufacturer part numbers, distributor SKUs and OEM BOM references
+- Persistent component-oriented digital identities
+- Structured technical and compatibility information
+- Supplier discovery and connection
+- Request-for-quotation workflows
+- Lifecycle and traceability records
+- Links to fleet and machine configurations
+- A potential integration path alongside existing ERP, PLM and MES systems
+
+Official website:
+https://www.roboparts.ai
+
+Public repository:
+https://github.com/PITN374/ROBOPARTS.ai
+
+4.3 ROBOTRAITS
+
+ROBOTRAITS is intended to provide structured descriptions of robot characteristics, physical configuration, capabilities, behavior and performance. Its potential role is to connect component-level information with robot-level capability and task eligibility.
+
+The distinction between a theoretical, designed, configured, available and verified capability is important. A robot should not be represented as having a capability merely because a component category or design concept suggests that capability could be possible.
+
+Overview:
+https://powerinthenumbers.ai/robotraits
+
+Repository:
+https://github.com/PITN374/ROBOTRAITS
+
+4.4 ROBOTRONIC
+
+ROBOTRONIC is positioned as an integration and engineering layer within the broader ecosystem. Its intended role includes system integration, engineering architecture and connections between physical robotics systems and the digital infrastructure. The existence of architecture documentation should not be described as proof of a deployed integration product.
+
+4.5 ROBORECYCLE
+
+ROBORECYCLE addresses lifecycle extension, recovery, refurbishment, reuse and recycling. Its strategic relevance is that persistent component identity and lifecycle records can support decisions about repair, replacement, reuse and end-of-life handling. Operational recovery networks and measured circularity outcomes require separate evidence.
+
+4.6 ROBOAGENTIC
+
+ROBOAGENTIC is intended to address intelligent-agent identity, discovery, authorization, orchestration, collaboration, auditability and accountability in robotics-related environments. It is a complementary future layer; the availability of design documents does not establish that an agent orchestration service is deployed.
+
+4.7 ROBOASI
+
+ROBOASI is positioned around autonomous intelligence and related architecture. It should be described according to its actual development status and should not be represented as a deployed autonomous model or service without reproducible implementation evidence.
+
+4.8 HUMANOIDS.SELECT AND COBOTS.SELECT
+
+These properties provide robotics-category namespace storefronts and contribute to the wider identity and distribution strategy.
+
+Humanoids.select:
+https://humanoids.select
+
+Cobots.select:
+https://cobots.select
+
+The public storefronts display searchable Web3 namespace names and purchase pathways. The broader PITN proposition refers to machine identity and, in the humanoid context, digital identity passports. A namespace storefront is not itself proof of a complete machine passport system. A machine passport demonstration should include machine binding, structured metadata, issuer and controller information, cryptographic verification, lifecycle events, evidence references and a usable verification interface.
+
+======================================================================
+5. ROBOPARTS: PRODUCT AND COMMERCIAL ENTRY POINT
+======================================================================
+
+The ROBOPARTS public website describes a Components & Fleet Marketplace Hub. The concept connects manufacturer part numbers, distributor SKUs, OEM BOM references and service serials through persistent machine-oriented identities and namespaces. It is designed to complement existing enterprise systems rather than require their wholesale replacement.
+
+Visible categories include:
+- Grippers and end effectors
+- Actuators
+- Sensors
+- Controllers
+- Power systems
+- Vision modules
+
+The public page displays illustrative product listings and describes a supplier cohort, source verification, RFQ handling and a 90-day pilot pathway. These are commercially relevant interface elements because they provide a potential route from discovery to supplier engagement and an enterprise pilot.
+
+However, public listings alone do not prove:
+- Supplier authorization to display a brand or product
+- Current inventory or availability
+- Verified specifications or certifications
+- Binding supplier participation
+- Completed transactions
+- A deployed RFQ backend
+- Paid pilot completion or customer acceptance
+
+A supplier cohort claim should be supported by a named register, supplier permissions, source records, product-data provenance and dated verification status. Until then, public statements should identify the cohort as stated, developing or subject to verification.
+
+The strongest initial ROBOPARTS use case is not an attempt to solve every robotics data problem at once. It is a controlled workflow for one customer, one component category and a defined dataset.
+
+Recommended first workflow:
+1. Ingest a representative customer BOM.
+2. Map manufacturer part numbers, distributor SKUs and customer-specific references.
+3. Resolve product identities and, where data permits, physical-instance identities.
+4. Attach verified technical documentation and source provenance.
+5. Identify candidate suppliers and request quotations.
+6. Record a lifecycle event or configuration relationship.
+7. Measure time, accuracy, completeness and procurement outcomes against a baseline.
+
+Potential commercial models include enterprise subscriptions, supplier participation, qualified RFQ or transaction fees, API/data services, onboarding, integration and support. These are potential models, not claims that each is currently operating.
+
+======================================================================
+6. COMPONENT IDENTITY, DATA MODEL AND LIFECYCLE ARCHITECTURE
+======================================================================
+
+The proposed identity model should distinguish at least the following concepts:
+
+COMPONENT CLASS: The category or type of component, such as actuator, encoder, sensor, controller or end effector.
+
+ORGANIZATION: Manufacturer, distributor, OEM, integrator, operator, service provider or other issuer of relevant records.
+
+PRODUCT: A commercial product definition, including manufacturer, part number, model, revision and technical attributes.
+
+PHYSICAL INSTANCE: An individual physical unit, potentially identified by serial number, lot, date, issuer and identification scheme.
+
+ASSEMBLY CONFIGURATION: A machine, subsystem or assembly definition at a specific revision or point in time.
+
+BOM POSITION: A position in an assembly definition. It is not, by itself, evidence of the physical component currently installed.
+
+COMPONENT RELATIONSHIP: A typed relationship between products, physical instances, assemblies, machines, organizations or records.
+
+LIFECYCLE EVENT: A time-stamped assertion about manufacture, inspection, shipment, receipt, installation, calibration, maintenance, removal, replacement, transfer, decommissioning or another event.
+
+SOURCE RECORD REFERENCE: A pointer to an authoritative or originating record in an external system.
+
+EVIDENCE REFERENCE: A reference to documentation, test results, images, certificates or other supporting material.
+
+VERIFICATION ASSERTION: A record of the verification method, result, issuer, date and evidence used.
+
+Identity should be separated from changing ownership, location, configuration, condition and operational state. A component replacement should create a new physical-instance relationship and preserve the removed component's identity and history rather than overwrite them.
+
+For configuration-dependent relationships, the data model should distinguish:
+- valid_time: when the relationship applied in the physical or operational environment
+- recorded_time: when the relationship was entered into the information system
+
+This supports historical reconstruction when events are recorded late or corrected later.
+
+Lifecycle event records should be versioned and include, as appropriate:
+- Schema version
+- Event identifier and event type
+- Event time and recorded time
+- Issuing organization or authorized actor
+- Subject entity
+- Related entities and relationship types
+- Source-system record reference
+- Structured payload
+- Evidence references
+- Integrity method and verification status
+
+A recorded event is an assertion supported by its source and evidence. The existence of a digital event record does not, by itself, prove that the physical event occurred.
+
+======================================================================
+7. DIGITAL TWINS AND MACHINE CONFIGURATION
+======================================================================
+
+ROBOPARTS can provide a physical-component and relationship layer for robotic digital-twin systems.
+
+A digital representation may connect:
+- Robot identity
+- Current and historical hardware configuration
+- Components and subsystems
+- Sensors, actuators, controllers and power systems
+- Software and firmware references
+- Current operational state
+- Performance and maintenance records
+- Configuration history
+- Lifecycle events
+
+Persistent identity must remain distinct from current state. Operational states such as operational, idle, charging, maintenance, fault, restricted, offline or decommissioned do not, by themselves, change the identity of a robot.
+
+A robot may have multiple configurations during its service life. Sensor, actuator, controller, battery or end-effector replacement should produce an auditable configuration change. The digital representation should preserve the applicable component instances and software or firmware versions for each configuration.
+
+The accuracy of a digital twin depends on the quality, timeliness, provenance and verification status of the underlying records. A component identity layer can supply structured references, but it does not automatically create live telemetry, predictive maintenance or a complete real-time digital twin. Those functions require appropriate integrations and validated data feeds.
+
+======================================================================
+8. ROBOTRAITS: CAPABILITY AND SEMANTIC LAYER
+======================================================================
+
+ROBOTRAITS is intended to structure information about robot characteristics, physical configuration, capabilities, behavior and performance. Its strategic role is to make component and machine data more meaningful for search, comparison, compatibility assessment and task evaluation.
+
+The architecture should distinguish:
+- Designed capability
+- Configured capability
+- Currently available capability
+- Tested capability
+- Independently verified capability
+
+A capability statement should identify its source, applicable configuration, operating conditions, measurement method, evidence and date where relevant. A capability should not be inferred solely from a product category or marketing description.
+
+The ROBOTRAITS repository contains ontology and schema artifacts, including RDF/OWL/Turtle and SHACL materials, alongside registry and example files. A technical review identified a namespace-prefix issue in a SHACL artifact that should be checked and corrected, followed by repeatable RDF and SHACL validation. Trait definitions should be reviewed for semantic precision, provenance and domain-expert validity.
+
+The existence of ontology files or a trait registry does not establish a complete production knowledge graph, externally adopted standard or validated behavior model. Claims should track the actual level of implementation and validation.
+
+======================================================================
+9. WEB2 AND WEB3 NAMESPACE STRATEGY
+======================================================================
+
+PITN's digital asset strategy includes Web2 domains and blockchain-based Web3 namespaces. These asset classes must be described accurately and kept distinct.
+
+A conventional Web2 domain operates through the established DNS and registrar ecosystem, subject to registration, renewal, transfer and applicable policies.
+
+A blockchain-based Web3 namespace is a different technical and commercial asset. Its ownership, resolution and use may depend on the relevant blockchain, wallet, resolver, browser support, gateway or platform. A Web3 namespace should not be described as an ICANN-delegated DNS top-level domain unless it has separately obtained that status through the relevant process.
+
+PITN's Global TLD Hub displays 40 featured namespace entries across language and geographic markets. Other PITN materials refer to more than 1,000 mixed Web2/Web3 digital assets. These figures represent different categories and should not be conflated. A featured namespace count is not the same as a total domain count, registration count or number of assets legally owned and transferable by PITN.
+
+Before investor circulation, PITN should maintain a reconciled asset schedule with one row per asset and fields for:
+- Exact asset name
+- Web2 or Web3 classification
+- Registrar, registry or platform
+- Registrant, wallet or controller
+- Token ID or transaction reference, where applicable
+- Registration or mint date
+- Renewal or expiry date
+- Current status
+- Transfer restrictions and required consents
+- Encumbrances or third-party interests
+- Partner revenue share
+- Revenue history
+- Evidence reference
+
+The public namespace storefronts demonstrate a visible discovery and purchase pathway. They do not independently establish ownership, registration status, transferability, browser-wide resolution or revenue receipts for every listed name.
+
+PITN materials refer to a Freename commercial or revenue-sharing relationship. The executed agreement, covered assets, applicable royalty settings, deductions, term, termination, transferability and payment history should be reviewed before specific contractual economics are represented as established. General platform documentation about reseller or royalty features is not proof of PITN's specific entitlement or receipts.
+
+======================================================================
+10. HUMANOID ROBOTICS AND MARKET CONTEXT
+======================================================================
+
+The growth of humanoid and other robotics systems could increase demand for component identification, machine configuration, sourcing, maintenance, replacement, traceability and interoperability.
+
+Morgan Stanley has published a long-range estimate that the humanoid robotics market could exceed US$5 trillion by 2050, with more than one billion humanoid robots potentially deployed. This is a forecast, not a guaranteed outcome, and it refers to the humanoid market rather than PITN's addressable market.
+
+Morgan Stanley has also published a separate broader AI-robotics scenario involving potential annual product revenues of approximately US$25 trillion by 2050, with additional recurring service revenue. This is a distinct market frame and should not be added to the humanoid estimate or presented as PITN's total addressable market.
+
+The relevant strategic implication for PITN is that a larger installed base of robots may increase the need for the connective data and transaction infrastructure surrounding physical machines and their supply chains.
+
+PITN should develop its own bottom-up market model. It should identify target customer segments, expected customer counts, relevant component records, supplier participation, transaction frequency, integration requirements, pricing and realistic adoption rates. Large third-party forecasts provide context; they do not substitute for PITN's own serviceable-market analysis.
+
+======================================================================
+11. PUBLIC WEBSITE AND PLATFORM REVIEW
+======================================================================
+
+11.1 PITN MASTER WEBSITE
+
+https://www.powerinthenumbers.ai
+
+The master website presents PITN as a Web2/Web3 infrastructure ecosystem with multiple robotics-related divisions, including Humanoids.select, Cobots.select, ROBOPARTS.ai, Robotraits / RoboAgentic, an international namespace hub and a platform walkthrough.
+
+The site has displayed differing global internet-reach estimates in materials reviewed, including approximately 4.4 billion and approximately 4.99 billion. These figures should be reconciled before use. PITN should identify the source, date, metric and calculation and should not imply that global internet reach represents PITN users, customers or market penetration.
+
+11.2 ROBOPARTS.AI
+
+https://www.roboparts.ai
+
+The public page presents a component and fleet marketplace concept, category listings and RFQ / pilot pathways. The interface is a market-facing product and lead-generation asset. Backend operation, successful transaction history, supplier authorization and enterprise adoption require separate evidence.
+
+11.3 HUMANOIDS.SELECT AND COBOTS.SELECT
+
+https://humanoids.select
+https://cobots.select
+
+The pages present searchable Web3 namespace storefronts. Their current visible functions should be distinguished from the more extensive machine identity and digital passport capabilities described elsewhere in PITN materials.
+
+11.4 GLOBAL TLD HUB
+
+https://powerinthenumbers.ai/global-tlds
+
+The page presents featured namespace entries and a broader international naming strategy. Inventory, ownership, registration, language variants and transferability should be reconciled through a controlled asset register.
+
+11.5 ROBOTRAITS OVERVIEW
+
+https://powerinthenumbers.ai/robotraits
+
+The page describes a semantic and capability layer connecting traits, machine identity, component namespaces, telemetry, maintenance and provenance. These are intended architectural functions and should be mapped to demonstrable implementation evidence.
+
+11.6 PLATFORM WALKTHROUGH
+
+https://www.youtube.com/watch?v=gT7IuPATLvA
+
+The PITN website identifies this video as a platform walkthrough covering identity mapping, component lifecycle and platform architecture. It is a logical overview demonstration for prospective partners. The video content was not independently inspected as part of this review; therefore, this document does not assert which specific workflows or screens it demonstrates.
+
+For external presentations, pair the walkthrough with a live demonstration and label each function as live, simulated or planned.
+
+======================================================================
+12. SELECTED GITHUB REPOSITORY REVIEW
+======================================================================
+
+The repository inventory reviewed identified ten PITN-related repositories, six public and four private, with two public repositories archived. The work included repository inventory, top-level file review and selected technical documentation. It was not a complete source-code audit, security assessment, software bill-of-materials review or legal opinion on ownership.
+
+12.1 ROBOPARTS.ai
+https://github.com/PITN374/ROBOPARTS.ai
+
+The repository contains substantial specifications and architecture documentation, including master specifications, implementation-manifest materials, API/database prototype documentation, digital identity and BOM materials, and lifecycle/traceability documentation. The API/database prototype is explicitly labelled untested. The implementation materials describe foundational and planning work. The repository therefore supports the existence of documented architecture and implementation specifications; it does not independently establish a fully deployed production backend.
+
+The repository metadata reviewed did not show a declared open-source license. The intended public or proprietary licensing position should be made explicit and reviewed for consistency with all published files and dependencies.
+
+12.2 ROBOTRAITS
+https://github.com/PITN374/ROBOTRAITS
+
+The repository contains ontology and schema artifacts, including RDF/OWL/Turtle and SHACL materials, a trait registry, examples and documentation. The review identified a SHACL namespace-prefix issue requiring validation. Trait definitions should be checked for semantic quality and evidence. The repository demonstrates structured ontology work and limited code artifacts, not a complete production service or externally validated standard.
+
+12.3 PITN ROBOPARTS PILOT
+https://github.com/PITN374/pitn-roboparts-pilot
+
+The archived repository describes target pilot architecture and includes setup, schema, acceptance and security documentation. An internal security acceptance record is marked PASS. The deployment URL is redacted, and the reviewed repository did not contain the complete application source, migration set, test logs or supporting artifacts needed to independently reproduce or validate the result. The PASS notation should therefore be described as an internal record, not independent security certification.
+
+12.4 ROBOPARTS IDENTITY
+https://github.com/PITN374/roboparts-identity
+
+The repository contains identity architecture and implementation specifications with limited static assets. The reviewed tree did not demonstrate a complete production application.
+
+12.5 POWERINTHENUMBERS
+https://github.com/PITN374/powerinthenumbers
+
+The repository contains umbrella website and supporting static materials. It is the appropriate home for this consolidated ecosystem review and links to the specialist project repositories.
+
+12.6 ROBORECYCLE
+https://github.com/PITN374/ROBORECYCLE
+
+The archived repository contains circularity, recovery, lifecycle and component identity architecture/documentation. A deployed production platform was not established by the reviewed inventory.
+
+12.7 ROBOAGENTIC
+https://github.com/PITN374/ROBOAGENTIC
+
+The private repository inventory included documentation for agent identity, discovery, orchestration, collaboration, authorization, audit, revocation and accountability. A complete deployed application was not demonstrated by the root inventory reviewed.
+
+12.8 ROBOTRONIC
+https://github.com/PITN374/ROBOTRONIC
+
+The private repository inventory included engineering and integration architecture, execution framework, software roadmap and safety/integration specifications. A complete deployed application was not demonstrated by the root inventory reviewed.
+
+12.9 ROBOASI
+https://github.com/PITN374/ROBOASI
+
+The private repository inventory included AI and autonomous-intelligence architecture and IP documentation. A deployed model or service was not demonstrated by the inventory reviewed.
+
+12.10 ROBOPARTS-NEXTJS
+https://github.com/PITN374/roboparts-nextjs
+
+The root inventory reviewed appeared minimal or partial, and a conventional complete application source tree was not evident in that inventory. This should be rechecked against the current branch and deployment before any stronger statement is made.
+
+OVERALL TECHNICAL CONCLUSION
+
+The defensible statement is that PITN has documented architecture, structured product and identity specifications, public-facing interfaces, selected ontology/code artifacts and a multi-project development portfolio. The available review does not justify describing every portfolio initiative as production-deployed, independently security-certified or fully integrated.
+
+======================================================================
+13. COMMERCIAL MODEL AND REVENUE EVIDENCE
+======================================================================
+
+MANAGEMENT REPRESENTATION
+
+PITN management represents that the business is already revenue-generating and that the commercial model is proven, with infrastructure architecture in place. This statement may be presented as management-reported information.
+
+PUBLICLY VISIBLE COMMERCIAL PATHWAYS
+
+The reviewed websites show a namespace search and purchase pathway and a ROBOPARTS inquiry / RFQ / pilot pathway. These demonstrate market-facing commercial mechanisms. They do not, by themselves, establish transaction amounts, completed customer contracts, repeat purchases, margins or recurring revenue.
+
+REVENUE STREAMS SHOULD BE SEPARATED
+
+Potential and/or existing revenue categories should be separately recorded:
+- Web2 domain sales or related services
+- Web3 namespace sales or reseller proceeds
+- Marketplace transactions
+- Supplier or listing services
+- Enterprise subscriptions
+- API and data services
+- RFQ or transaction fees
+- Paid pilots
+- Integration, onboarding and support
+
+Namespace sales revenue must not be presented as ROBOPARTS enterprise-platform revenue. A pilot inquiry is not a paid pilot. A public product listing is not a completed transaction.
+
+CONFIDENTIAL EVIDENCE PACKAGE
+
+For investor diligence, prepare:
+- Monthly revenue ledger by product line
+- Gross receipts and net receipts
+- Payment-provider and partner payout statements
+- Freename statements and executed agreement
+- Fees, refunds, chargebacks and partner shares
+- Customer and transaction counts
+- Repeat-purchase and retention information
+- Paid pilot contracts and acceptance evidence
+- Subscription agreements and renewal information
+- Revenue concentration and customer dependency
+- Reconciliation to bank or accounting records
+
+Sensitive customer and payment details should be shared through a controlled data room, with appropriate redaction and confidentiality protections.
+
+======================================================================
+14. INTELLECTUAL PROPERTY, OWNERSHIP AND LEGAL DILIGENCE
+======================================================================
+
+Repository notices, author attributions and ownership statements are relevant project records, but they do not alone establish legal title to every code contribution, ontology, brand, domain, namespace or other asset.
+
+Before an investment, acquisition, licensing or strategic partnership transaction, PITN should assemble a complete intellectual-property and asset schedule covering:
+- Founder and entity ownership
+- Employee, contractor and contributor assignments
+- Repository history and release records
+- Third-party code, data and dependency licenses
+- Open-source and proprietary licensing consistency
+- Trademark applications and registrations
+- Domain registration records
+- Web3 namespace ownership and controller records
+- Token IDs and relevant transaction references
+- Registrar, platform and partner agreements
+- Transfer restrictions, encumbrances and required consents
+- Freename agreement and revenue-sharing provisions
+- Rights to use supplier data, logos, product images and technical documentation
+
+A public GitHub repository does not automatically make all underlying intellectual property open source. Conversely, a proprietary notice does not override an applicable license or third-party rights. Legal counsel should review the chain of title, licenses and commercial agreements before material claims are made to investors or acquirers.
+
+======================================================================
+15. RISKS AND MITIGATION
+======================================================================
+
+PRODUCTION-READINESS RISK
+Risk: Public interfaces and architecture are visible, but complete backend workflows, integrations, tests and deployment evidence are not independently established.
+Mitigation: Publish a technical readiness matrix and demonstrate reproducible end-to-end workflows.
+
+SUPPLIER-VALIDATION RISK
+Risk: Displayed listings and a stated supplier cohort require supplier permissions, current product data and source verification.
+Mitigation: Maintain a dated supplier register and evidence for each approved listing.
+
+REVENUE-SUBSTANTIATION RISK
+Risk: Management reports revenue, but public information does not quantify sales, payouts, recurring revenue or margins.
+Mitigation: Maintain reconciled financial evidence by product line in a confidential data room.
+
+IP AND ASSET-TITLE RISK
+Risk: Rights notices and aggregate asset counts do not establish complete ownership or transferability.
+Mitigation: Complete chain-of-title, license, domain, namespace and partner-contract diligence.
+
+WEB3 RESOLUTION RISK
+Risk: Blockchain namespaces are not equivalent to ICANN-rooted DNS domains and may depend on compatible resolution infrastructure.
+Mitigation: Use precise terminology and demonstrate resolution paths on named supported browsers, wallets or resolvers.
+
+PUBLIC-CLAIM CONSISTENCY RISK
+Risk: Public materials have shown differing reach estimates and aggregate asset counts.
+Mitigation: Reconcile figures, date sources and define what each metric counts.
+
+PORTFOLIO-SCOPE RISK
+Risk: A broad portfolio may distract from the initial commercial product.
+Mitigation: Lead with ROBOPARTS and position other initiatives as complementary layers or staged roadmap extensions.
+
+======================================================================
+16. RECOMMENDED ENTERPRISE PILOT
+======================================================================
+
+The most direct way to validate the central PITN thesis is a narrowly scoped pilot with one robotics OEM, integrator, manufacturer or fleet operator.
+
+Recommended scope:
+1. Select one customer and one component category, such as actuators, grippers, sensors or controllers.
+2. Obtain a representative BOM and relevant source-system records.
+3. Map manufacturer part numbers, distributor SKUs and customer-specific identifiers.
+4. Create structured product and, where possible, physical-instance identity records.
+5. Attach source provenance, technical documentation and compatibility constraints.
+6. Connect a small, verified supplier set.
+7. Demonstrate an RFQ or sourcing workflow.
+8. Record one lifecycle event, such as installation, inspection, maintenance or replacement.
+9. Compare results against a documented baseline.
+10. Obtain customer acceptance and agree on commercial conversion terms.
+
+Suggested pilot metrics:
+- Time required to identify a component
+- Time required to source a replacement
+- Identifier match accuracy
+- Ambiguous and unresolved identifier rate
+- Completeness of product and supplier records
+- RFQ response time
+- Quote coverage and response rate
+- BOM reconciliation time
+- Procurement error rate
+- Lifecycle record completeness
+- Integration effort and ongoing operating cost
+
+A pilot should have a defined dataset, access permissions, security controls, scope, success criteria, customer owner, timeline and commercial terms. Any no-cost pilot offer should be clearly distinguished from paid customer revenue.
+
+======================================================================
+17. DEVELOPMENT AND VALIDATION ROADMAP
+======================================================================
+
+PHASE 1 — REPOSITORY AND EVIDENCE INVENTORY
+Review source code, schemas, migrations, APIs, deployment configurations, documentation, licenses and historical records. Identify which capabilities are implemented, partially implemented, planned or conceptual.
+
+PHASE 2 — FORMAL IDENTITY AND RELATIONSHIP MODEL
+Define component classes, organizations, products, physical instances, BOM positions, machines, relationships, identifier schemes and temporal behavior.
+
+PHASE 3 — LIFECYCLE EVENT MODEL
+Define versioned event structures, payload validation, provenance, source references, correction procedures and integrity requirements.
+
+PHASE 4 — CORE RETRIEVAL WORKFLOWS
+Implement and test identity resolution, lifecycle retrieval, historical configuration reconstruction, lot impact analysis and replacement traceability.
+
+PHASE 5 — SUPPLIER AND RFQ WORKFLOW
+Establish verified supplier records, product-data provenance, RFQ submission, supplier response, quote comparison and auditable status transitions.
+
+PHASE 6 — DIGITAL-TWIN AND ROBOTRAITS INTEGRATION
+Connect component records to machine configuration, capabilities, state and lifecycle information. Clearly distinguish static records from live telemetry.
+
+PHASE 7 — SECURITY, ACCESS AND GOVERNANCE
+Implement role-based access, authentication, authorization, audit logs, data retention, tenant separation, API security and appropriate privacy controls.
+
+PHASE 8 — TESTING AND CUSTOMER VALIDATION
+Execute acceptance tests against known reference datasets, document results and limitations, conduct security review, and obtain customer acceptance for pilot outcomes.
+
+PHASE 9 — COMMERCIAL REPEATABILITY
+Convert validated workflows into repeatable onboarding, integration, pricing, support and renewal processes.
+
+Completion dates and implementation status should be recorded separately. A roadmap is not evidence of completion.
+
+======================================================================
+18. INVESTOR AND PARTNER POSITIONING
+======================================================================
+
+RECOMMENDED CORE POSITIONING
+
+POWER IN THE NUMBERS is building the identity and intelligence infrastructure layer for the robotics economy.
+
+Through ROBOPARTS.ai, PITN is developing a connective component and data layer intended to link physical component identities, supplier information, bills of materials, procurement workflows and lifecycle records across robotics manufacturers, integrators and fleet operators.
+
+The broader ecosystem extends into structured capability semantics, machine identity, system integration, circularity and future agentic/autonomous workflows. PITN combines a market-facing namespace distribution strategy with a robotics-focused infrastructure and commercial platform strategy.
+
+Management reports that PITN is already revenue-generating. Revenue details and the production status of individual workflows should be supported by appropriate evidence during diligence.
+
+The immediate objective is to convert documented architecture and public-facing product pathways into repeatable, measurable enterprise deployments.
+
+INVESTOR COMMUNICATION PRINCIPLES
+
+- Lead with the problem and ROBOPARTS use case, not a long list of domains.
+- Explain why persistent identity and lifecycle data matter to robotics.
+- Show a working workflow and disclose which parts are live, simulated or planned.
+- Present market forecasts as third-party scenarios, not guaranteed outcomes.
+- Separate management-reported revenue from independently verified financial evidence.
+- Distinguish Web2 domains from blockchain-based Web3 namespaces.
+- Separate public documentation from confidential commercial and legal evidence.
+- Present the broader portfolio as a staged expansion strategy rather than implying every project is fully deployed.
+
+======================================================================
+19. IMMEDIATE PRIORITIES
+======================================================================
+
+1. Reconcile the PITN digital asset inventory and all published asset counts.
+2. Reconcile the differing public internet-reach figures and remove unsupported or inconsistent metrics.
+3. Assemble monthly revenue evidence and separate revenue by product line.
+4. Confirm the executed Freename agreement, covered assets, economics and transfer conditions.
+5. Validate each supplier listing and the stated supplier cohort.
+6. Prepare a live ROBOPARTS demonstration using a controlled, reproducible dataset.
+7. Publish a technical status matrix identifying live, tested, prototype, planned and conceptual capabilities.
+8. Correct and validate ROBOTRAITS ontology and SHACL artifacts.
+9. Review repository licenses, third-party dependencies and contributor assignments.
+10. Prepare the intellectual-property and domain/namespace asset schedule.
+11. Define one enterprise pilot with measurable acceptance criteria.
+12. Keep investor-sensitive financial, customer and ownership evidence in a controlled data room.
+
+======================================================================
+20. OFFICIAL PROJECT AND RESEARCH REFERENCES
+======================================================================
+
+PITN MASTER WEBSITE
+https://www.powerinthenumbers.ai
+
+ROBOPARTS.AI
+https://www.roboparts.ai
+
+HUMANOIDS.SELECT
+https://humanoids.select
+
+COBOTS.SELECT
+https://cobots.select
+
+PITN GLOBAL TLD HUB
+https://powerinthenumbers.ai/global-tlds
+
+ROBOTRAITS OVERVIEW
+https://powerinthenumbers.ai/robotraits
+
+PITN PLATFORM WALKTHROUGH
+https://www.youtube.com/watch?v=gT7IuPATLvA
+
+ROBOPARTS.AI GITHUB
+https://github.com/PITN374/ROBOPARTS.ai
+
+ROBOTRAITS GITHUB
+https://github.com/PITN374/ROBOTRAITS
+
+PITN GITHUB ORGANIZATION
+https://github.com/PITN374
+
+PUBLISHED RESEARCH PAPER
+Beyond the Machine: Building the Infrastructure That Connects Robotics
+https://doi.org/10.5281/zenodo.24168975
+
+MORGAN STANLEY HUMANOID ROBOTICS MARKET RESEARCH
+https://www.morganstanley.com/ideas/humanoid-robots-market-5-trillion
+
+FREENAME
+https://freename.com/
+
+The source register is provided to support further review. Market forecasts, platform capabilities and third-party terms should be checked against their current primary sources before reuse in new materials.
+
+======================================================================
+21. CONCLUSION
+======================================================================
+
+PITN's strategic opportunity is to develop connective infrastructure for the physical robotics economy: persistent identities, structured component and capability information, supplier connections, machine configurations and lifecycle records.
+
+ROBOPARTS is the most direct commercial entry point because it addresses concrete operational problems involving component identification, sourcing, compatibility, procurement and traceability. ROBOTRAITS and the other initiatives provide complementary layers that may expand the value of the infrastructure as implementation and adoption progress. Web2 and Web3 namespaces provide an additional identity and distribution strategy, subject to clear technical and legal distinctions.
+
+The work completed to date establishes a documented ecosystem thesis, public-facing platforms, technical specifications, selected ontology/code artifacts and a set of commercial pathways. The next stage is evidence-led execution: prove the workflows, validate suppliers, substantiate revenue, reconcile asset ownership and convert a focused enterprise pilot into a repeatable commercial offering.
+
+PITN's long-term objective is to help connect physical robotics components and machines to persistent, structured and verifiable digital records throughout their operational lifecycles.
+
+POWER IN THE NUMBERS
+https://www.powerinthenumbers.ai
+
+ROBOPARTS.ai
+https://www.roboparts.ai
+
+Contact: powerinthenumbers@pitn.ai
+
+======================================================================
+END OF DOCUMENT
+======================================================================
