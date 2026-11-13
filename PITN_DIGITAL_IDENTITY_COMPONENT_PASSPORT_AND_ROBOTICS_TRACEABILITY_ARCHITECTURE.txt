@@ -1,0 +1,816 @@
+PITN DIGITAL IDENTITY, COMPONENT PASSPORT, AND ROBOTICS TRACEABILITY ARCHITECTURE
+Version 1.0
+Author: Aaron Bailot
+Date: November 13, 2026
+
+DOCUMENT STATUS
+Declarative Framework Architecture
+Part of the POWER IN THE NUMBERS (PITN) Framework
+
+This document defines the relationship between persistent digital identity, physical component identity, product identity, robot identity, digital passports, bills of materials, lifecycle records, and evidence within the PITN framework architecture.
+
+It establishes the architectural relationship between PITN identity concepts and the ROBOPARTS.ai robotics component information model.
+
+This document describes framework architecture and data relationships. It is not an implementation guide, development roadmap, commercial proposal, or claim that every described service is deployed as production software.
+
+1. ARCHITECTURAL PURPOSE
+
+PITN establishes a persistent identity architecture for physical assets, products, components, and their associated information.
+
+The architecture connects an identifiable physical object to a structured digital record containing its identity, product classification, manufacturer association, configuration, installation, lifecycle history, and supporting evidence.
+
+Within robotics, this architecture provides a common identity and information structure connecting:
+
+- Robot assets
+- Robot product models
+- Robot configurations
+- Component products
+- Individual physical components
+- Manufacturers and suppliers
+- Engineering bills of materials
+- Physical installation records
+- Maintenance and lifecycle events
+- Verification records and supporting evidence
+- Digital component and robot passports
+
+ROBOPARTS.ai represents the robotics component and lifecycle information architecture within this framework.
+
+PITN provides the overarching identity and information architecture connecting these records.
+
+2. FUNDAMENTAL IDENTITY PRINCIPLES
+
+PITN distinguishes three fundamental identity classes.
+
+2.1 Robot Identity
+
+A robot identity identifies an individual robot asset.
+
+Example:
+
+ROBOT-001
+
+This identifier represents one identifiable robot asset. It does not represent every robot of the same model or manufacturer.
+
+2.2 Component Product Identity
+
+A component product identity identifies a defined product or product model.
+
+Example:
+
+ACT-220
+
+This identifier represents an actuator product model. It identifies the product definition rather than an individual physical actuator.
+
+2.3 Physical Component Identity
+
+A physical component identity identifies one individual manufactured component.
+
+Example:
+
+RP-CI-000001
+
+Manufacturer serial number:
+
+SN-1001
+
+The persistent component-instance identity and manufacturer serial number are separate identifiers associated with the same physical component.
+
+The internal component-instance identity provides a stable reference within the ROBOPARTS.ai information architecture.
+
+The manufacturer serial number provides the manufacturer's physical product identification reference.
+
+2.4 Identity Separation
+
+The identity architecture preserves the distinction between:
+
+ROBOT-001
+Individual robot asset
+
+ACT-220
+Actuator product model
+
+RP-CI-000001
+Individual physical component record
+
+SN-1001
+Manufacturer serial number
+
+These identifiers are related through structured records. They are not interchangeable.
+
+3. PITN IDENTITY AND NAMESPACE ARCHITECTURE
+
+PITN supports namespace-based classification and identity relationships.
+
+The namespace:
+
+.actuator
+
+identifies the actuator component category within the identity architecture.
+
+A namespace establishes a classification context. It does not replace the persistent identity of a product or physical component.
+
+An actuator product may therefore be represented through:
+
+Namespace: .actuator
+Product identity: ACT-220
+Manufacturer: Example Motion Systems
+Manufacturer part number: EMS-ACT-220
+Product revision: A
+
+An individual physical actuator may be represented through:
+
+Namespace: .actuator
+Product identity: ACT-220
+Component instance: RP-CI-000001
+Manufacturer serial: SN-1001
+
+The namespace, product identity, component-instance identity, and manufacturer serial number retain their individual meanings.
+
+4. ROBOPARTS.ai IDENTITY AND COMPONENT MODEL
+
+The ROBOPARTS.ai data architecture defines relationships among the following principal entities:
+
+ORGANIZATION
+Manufacturer, supplier, or other participating organization.
+
+PRODUCT
+A defined component product or product model.
+
+COMPONENTINSTANCE
+An individual physical component associated with a product.
+
+ROBOT
+An identifiable robot asset.
+
+BOMPOSITION
+The physical installation relationship between a component instance and a robot.
+
+LIFECYCLEEVENT
+A recorded event associated with a component's lifecycle.
+
+COMPATIBILITYASSESSMENT
+A structured compatibility relationship or assessment.
+
+PERFORMANCEOBSERVATION
+A recorded performance observation associated with an identifiable entity.
+
+ONTOLOGYRELATIONSHIP
+A structured relationship between identities or entities.
+
+These entities form a connected information architecture rather than independent product records.
+
+4.1 Entity Identity Relationships
+
+The principal identity relationships are:
+
+ROBOT
+  robot_id: ROBOT-001
+
+PRODUCT
+  product_id: ACT-220
+  namespace: .actuator
+
+COMPONENTINSTANCE
+  component_instance_id: RP-CI-000001
+  product_id: ACT-220
+  serialnumber: SN-1001
+
+BOMPOSITION
+  robotid: ROBOT-001
+  componentinstanceid: RP-CI-000001
+
+The robot identifies the asset.
+
+The product identifies the component model.
+
+The component instance identifies the individual physical component.
+
+The BOM position records the installation relationship between the robot and that physical component.
+
+4.2 Manufacturer Identity
+
+Manufacturer information is associated with the product and its corresponding organization record.
+
+Relevant product attributes include:
+
+- Manufacturer
+- Manufacturer part number
+- Product namespace
+- Product revision
+- Product description
+- Product specifications
+- Product documentation
+- Verification status
+- Supporting evidence references
+
+Manufacturer identity is not substituted for component identity.
+
+4.3 Persistent Component Identity
+
+A physical component retains its component-instance identity throughout its recorded lifecycle.
+
+Its installation, removal, maintenance, inspection, replacement, and other lifecycle events are associated with that persistent identity.
+
+A change in installation location does not create a new physical component identity.
+
+A replacement component receives its own component-instance identity and manufacturer serial number.
+
+5. ROBOT IDENTITY AND DIGITAL PASSPORT ARCHITECTURE
+
+A robot passport presents the structured identity and associated information of an individual robot asset.
+
+The passport connects the robot identity to its product model, manufacturer, configuration, component relationships, installation records, lifecycle history, and supporting evidence.
+
+The robot identity record may contain:
+
+ROBOT IDENTITY
+
+robot_id
+name
+manufacturer
+model
+robot_class
+status
+location_reference
+
+IDENTITY RECORD
+
+identity_id
+entity_type
+entity_id
+identity_alias
+identity_namespace
+registered_at
+verification_status
+verification_method
+evidence_reference
+
+The identity record provides a common logical structure for associating identity information with different entity types.
+
+The identity record is an architectural abstraction. It does not imply that every listed field is already implemented as a separate database table.
+
+5.1 Robot Passport Information
+
+A robot passport may present:
+
+- Persistent robot identifier
+- Manufacturer
+- Robot model
+- Robot classification
+- Identity namespace
+- Registration information
+- Current status
+- Configuration identity
+- Component inventory
+- Installed component relationships
+- Lifecycle history
+- Verification status
+- Supporting evidence references
+
+5.2 Component Passport Information
+
+A component passport presents the identity and associated information of an individual physical component.
+
+It connects:
+
+- Persistent component-instance identity
+- Product identity
+- Manufacturer
+- Manufacturer part number
+- Manufacturer serial number
+- Product revision
+- Namespace
+- Physical identification references
+- Robot installation relationships
+- Lifecycle events
+- Maintenance and inspection history
+- Compatibility information
+- Supporting evidence
+
+The component passport is a presentation of structured identity and lifecycle information. It does not create a separate identity system.
+
+6. FACTORY01 IDENTITY AND PASSPORT RELATIONSHIP
+
+The Factory01 humanoid identity and passport demonstrations illustrate a user-facing presentation of robot identity and associated status information.
+
+The displayed identity concepts include:
+
+- Factory01 identity alias
+- Active status
+- Verified Demo Identity
+- Factory 01 display name
+- Humanoids classification
+- Industrial Assembly — Humanoid classification
+- Registration date
+- Houston Pilot Site location reference
+- Humanoid Autonomous Unit identity type
+- Digital Identity Verified presentation
+
+These concepts correspond to identity and passport information represented within the PITN and ROBOPARTS.ai architecture.
+
+The relationship is architectural:
+
+Factory01 robot identity presentation
+        |
+        v
+PITN identity architecture
+        |
+        v
+ROBOPARTS.ai robot record
+        |
+        v
+Robot configuration and component relationships
+        |
+        v
+Physical component identities
+        |
+        v
+Lifecycle and supporting evidence
+
+The displayed verification status is a presentation attribute. Its evidentiary meaning depends on the verification method, source, scope, and supporting evidence associated with the identity record.
+
+A displayed status alone does not establish cryptographic authenticity or independently verified blockchain registration.
+
+7. BILL OF MATERIALS ARCHITECTURE
+
+PITN and ROBOPARTS.ai distinguish product configuration from physical component installation.
+
+These represent two related but different information relationships.
+
+7.1 Engineering Configuration BOM
+
+The engineering configuration BOM represents the intended component composition of a robot model or defined configuration.
+
+It identifies required products before individual physical components have necessarily been manufactured, procured, or installed.
+
+The configuration BOM includes:
+
+- Robot model
+- Configuration identity
+- Configuration revision
+- Component product identity
+- Required quantity
+- Component specifications
+- Approved alternatives
+- Engineering approval references
+
+The configuration BOM describes what a robot configuration is designed to contain.
+
+7.2 Physical Installation BOM
+
+The physical installation BOM represents the actual component instances installed in an individual robot asset.
+
+The ROBOPARTS.ai BOMPosition entity represents this physical installation relationship.
+
+Its documented fields include:
+
+- robotid
+- componentinstanceid
+- position
+- configurationrevision
+- installedat
+- removedat
+
+The physical installation BOM describes what is installed in a particular robot, where it is installed, and when the installation relationship exists.
+
+7.3 Relationship Between the Two BOM Structures
+
+The engineering configuration BOM identifies the intended product composition.
+
+The physical installation BOM identifies the actual physical component instances.
+
+For example:
+
+ENGINEERING CONFIGURATION
+
+Robot model: HX-1
+Configuration: CONFIG-01
+Required product: ACT-220
+Position: LEFT_SHOULDER
+
+PHYSICAL ROBOT ASSET
+
+Robot: ROBOT-001
+Installed product: ACT-220
+Component instance: RP-CI-000001
+Manufacturer serial: SN-1001
+Position: LEFT_SHOULDER
+
+The relationship permits comparison between the intended configuration and the actual installed components.
+
+The engineering BOM and physical installation BOM are distinct architectural concepts. The existing BOMPosition entity represents physical installation; a separate model-level BOM and BOMLine structure represents the engineering configuration relationship.
+
+8. LIFECYCLE AND TRACEABILITY ARCHITECTURE
+
+A physical component's identity is associated with its lifecycle history.
+
+Lifecycle records reference the persistent component-instance identity rather than relying exclusively on a product name or manufacturer serial number.
+
+Lifecycle events may include:
+
+- Manufacture
+- Registration
+- Receiving
+- Inspection
+- Verification
+- Installation
+- Commissioning
+- Operation
+- Maintenance
+- Repair
+- Removal
+- Replacement
+- Retirement
+
+A lifecycle event may contain:
+
+- Event identity
+- Component-instance identity
+- Event type
+- Event timestamp
+- Responsible actor or organization
+- Event payload
+- Evidence references
+- Related robot identity
+- Related installation position
+
+Example:
+
+{
+  "component_instance_id": "RP-CI-000001",
+  "event_type": "COMPONENT_INSTALLED",
+  "actor": "AUTHORIZED_TECHNICIAN",
+  "payload": {
+    "robot_id": "ROBOT-001",
+    "position": "LEFT_SHOULDER",
+    "configuration_revision": "CONFIG-01"
+  },
+  "evidence_references": [
+    "INSTALLATION-RECORD-001"
+  ]
+}
+
+The lifecycle record connects the individual component to the event and its supporting evidence.
+
+9. PHYSICAL IDENTIFICATION AND DIGITAL RESOLUTION
+
+Physical identification connects an identifiable physical component to its digital identity record.
+
+Identification methods may include:
+
+- QR codes
+- Manufacturer serial numbers
+- RFID
+- NFC
+- Other machine-readable identifiers
+
+A physical identifier provides a reference through which the corresponding digital identity record can be resolved.
+
+The architectural relationship is:
+
+PHYSICAL COMPONENT
+        |
+        v
+PHYSICAL IDENTIFIER
+        |
+        v
+IDENTITY RESOLUTION
+        |
+        v
+COMPONENTINSTANCE
+        |
+        v
+PRODUCT IDENTITY
+        |
+        v
+ROBOT INSTALLATION
+        |
+        v
+BOM AND LIFECYCLE RECORDS
+        |
+        v
+COMPONENT PASSPORT
+
+An illustrative identity address is:
+
+https://www.roboparts.ai/identity/SN-1001
+
+This address illustrates the intended resolution relationship. It is not a declaration that this exact public route is operational.
+
+A QR code or serial number identifies or locates a record. It does not, by itself, prove that the physical component is authentic.
+
+The architecture distinguishes:
+
+IDENTITY RESOLUTION
+Determining which digital record corresponds to an identifier.
+
+REGISTRATION
+Establishing an identity record within the information system.
+
+MANUFACTURER ASSOCIATION
+Associating the component with a manufacturer and product record.
+
+PHYSICAL IDENTIFICATION
+Associating a machine-readable or human-readable identifier with the physical object.
+
+AUTHENTICITY VERIFICATION
+Evaluating evidence supporting the claimed origin or authenticity of the physical component.
+
+RECORD INTEGRITY
+Evaluating whether the associated digital information has been altered or remains consistent with its integrity controls.
+
+These are separate functions and must not be treated as equivalent.
+
+10. VERIFICATION AND EVIDENCE ARCHITECTURE
+
+Verification status is associated with a defined verification method and supporting evidence.
+
+A verification record identifies what was evaluated, the method used, the source of the evidence, the scope of the verification, and the relevant time.
+
+Verification information may include:
+
+- Entity identity
+- Verification status
+- Verification method
+- Verification source
+- Evidence reference
+- Verification timestamp
+- Verification scope
+- Responsible organization or authority
+- Result or outcome
+
+The architecture distinguishes an asserted identity from an evidence-supported identity.
+
+A registered record is not automatically an authenticated physical object.
+
+A displayed verification label is not, by itself, proof of cryptographic verification.
+
+Blockchain registration, cryptographic signing, manufacturer attestation, physical inspection, and evidence-backed identity validation are distinct mechanisms.
+
+Their respective status and evidentiary scope must remain explicit.
+
+11. INFORMATION COST AND SHARED IDENTITY
+
+PITN connects information generated across the lifecycle of a physical product through persistent identity and structured relationships.
+
+In robotics, information associated with one component is relevant to multiple organizational functions.
+
+ENGINEERING
+
+- Product identity
+- Specifications
+- Product revision
+- Compatibility
+- Configuration requirements
+- Approved alternatives
+
+PROCUREMENT
+
+- Manufacturer
+- Manufacturer part number
+- Supplier
+- Purchasing references
+- Product documentation
+
+MANUFACTURING
+
+- Component identity
+- Receiving records
+- Product configuration
+- Installation
+- Manufacturing evidence
+
+MAINTENANCE
+
+- Physical component identity
+- Manufacturer serial
+- Installation history
+- Service history
+- Replacement information
+
+QUALITY
+
+- Inspection records
+- Test results
+- Verification status
+- Evidence references
+- Traceability
+
+The shared identity architecture connects these information relationships.
+
+Rather than reconstructing component information independently in each department, participating systems can reference the same persistent identity and associated records.
+
+The resulting architecture reduces the need for repeated identification, manual reconciliation, duplicate data entry, and separate reconstruction of component history.
+
+The economic value is associated with reduced information retrieval and reconciliation costs across the product lifecycle.
+
+Any quantified savings claim requires measured operational evidence from an actual manufacturer or deployment. A specific financial saving is not implied by the architecture alone.
+
+12. MANUFACTURER COMPONENT IDENTITY EXAMPLE
+
+The following example illustrates the relationship between a robot asset, component product, physical component, and installation record.
+
+12.1 Product Identity
+
+{
+  "product_id": "ACT-220",
+  "namespace": ".actuator",
+  "manufacturer": "Example Motion Systems",
+  "mpn": "EMS-ACT-220",
+  "revision": "A",
+  "verification_status": "UNVERIFIED"
+}
+
+12.2 Physical Component Identity
+
+{
+  "component_instance_id": "RP-CI-000001",
+  "product_id": "ACT-220",
+  "serial_number": "SN-1001",
+  "physical_identifier_type": "MANUFACTURER_SERIAL",
+  "verification_status": "UNVERIFIED"
+}
+
+12.3 Robot Asset Identity
+
+{
+  "robot_id": "ROBOT-001",
+  "name": "Factory Robot 001",
+  "manufacturer": "Example Robotics",
+  "model": "HX-1"
+}
+
+12.4 Physical Installation Relationship
+
+{
+  "robot_id": "ROBOT-001",
+  "component_instance_id": "RP-CI-000001",
+  "position": "LEFT_SHOULDER",
+  "configuration_revision": "CONFIG-01",
+  "installed_at": "2026-11-13T09:00:00Z",
+  "removed_at": null
+}
+
+12.5 Lifecycle Relationship
+
+{
+  "component_instance_id": "RP-CI-000001",
+  "event_type": "COMPONENT_INSTALLED",
+  "actor": "AUTHORIZED_TECHNICIAN",
+  "payload": {
+    "robot_id": "ROBOT-001",
+    "position": "LEFT_SHOULDER",
+    "configuration_revision": "CONFIG-01"
+  },
+  "evidence_references": [
+    "INSTALLATION-RECORD-001"
+  ]
+}
+
+12.6 Resulting Identity Relationship
+
+ROBOT-001
+  |
+  +-- ROBOT CONFIGURATION: CONFIG-01
+  |
+  +-- INSTALLED PRODUCT: ACT-220
+        |
+        +-- NAMESPACE: .actuator
+        |
+        +-- MANUFACTURER: Example Motion Systems
+        |
+        +-- MPN: EMS-ACT-220
+        |
+        +-- COMPONENT INSTANCE: RP-CI-000001
+              |
+              +-- MANUFACTURER SERIAL: SN-1001
+              |
+              +-- INSTALLATION POSITION: LEFT_SHOULDER
+              |
+              +-- LIFECYCLE HISTORY
+              |
+              +-- EVIDENCE REFERENCES
+
+This relationship establishes a persistent connection between the robot asset, component product, individual physical component, and its lifecycle information.
+
+13. ARCHITECTURAL ALIGNMENT AND REFERENCE DOCUMENTS
+
+The following public ROBOPARTS.ai documentation describes the relevant identity and component architecture:
+
+DIGITAL IDENTITY AND BOM
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/DIGITAL_IDENTITY_AND_BOM.txt
+
+API AND DATABASE PROTOTYPE
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/API_AND_DATABASE_PROTOTYPE.txt
+
+HUMANOIDO ACTUATOR IDENTITY
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/HUMANOIDO_Actuator_Identity.md
+
+ROBOPARTS DATA MODEL
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/ROBOPARTS_DATA_MODEL.txt
+
+PITN PHYSICAL IDENTITY, EVIDENCE, AND LIFECYCLE TRACEABILITY
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/PITN_PHYSICAL_IDENTITY_EVIDENCE_AND_LIFECYCLE_TRACEABILITY.md
+
+IMPLEMENTATION MANIFEST
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/IMPLEMENTATION_MANIFEST.md
+
+PITN WEB3 AND BLOCKCHAIN ARCHITECTURE
+
+https://github.com/PITN374/ROBOPARTS.ai/blob/main/PITN_WEB3_BLOCKCHAIN.md
+
+The public ROBOPARTS.ai repository identifies its work as Stage 1 — Architecture and Prototype Development.
+
+Its API and database prototype specification identifies itself as untested.
+
+Accordingly, the architecture and documented data relationships are not represented here as proof of a complete, independently validated production application.
+
+14. ARCHITECTURAL STATUS AND TERMINOLOGY
+
+The PITN framework distinguishes documented architecture from operational software capability.
+
+The following terminology applies:
+
+EXISTING ARCHITECTURE
+
+A data entity, identity relationship, namespace, or architectural concept documented in the framework.
+
+DOCUMENTED PROTOTYPE
+
+A proposed or described software structure, schema, API, or code concept that is not thereby established as tested software.
+
+IMPLEMENTED
+
+A software function or data structure demonstrated to exist in the relevant application or deployed environment.
+
+TESTED
+
+A function or system whose operation has been evaluated through identifiable tests and documented results.
+
+VERIFIED
+
+A defined identity claim or system property supported by specified evidence and a stated verification method.
+
+These terms are not interchangeable.
+
+The existence of an architectural specification does not establish that a corresponding production service has been deployed.
+
+The existence of a demonstration does not establish that its displayed identity is backed by a live verification service.
+
+15. ARCHITECTURAL PRINCIPLE
+
+PITN establishes a shared identity framework connecting physical assets and their associated information throughout their lifecycle.
+
+Within robotics, ROBOPARTS.ai provides the component, product, installation, BOM, compatibility, and lifecycle information relationships.
+
+Robot identities, component product identities, and physical component identities remain distinct while being connected through persistent references.
+
+Digital passports present these relationships through a common identity and information structure.
+
+The architecture is founded on the following principles:
+
+ONE PERSISTENT IDENTITY FRAMEWORK.
+
+SEPARATE IDENTITIES FOR ROBOTS, PRODUCTS, AND PHYSICAL COMPONENTS.
+
+MANUFACTURER IDENTIFIERS ASSOCIATED WITH, NOT SUBSTITUTED FOR, PERSISTENT COMPONENT IDENTITIES.
+
+SHARED DIGITAL PASSPORT PRESENTATION.
+
+CONNECTED ENGINEERING CONFIGURATION AND PHYSICAL INSTALLATION BOM RELATIONSHIPS.
+
+PERSISTENT LIFECYCLE AND TRACEABILITY RECORDS.
+
+EVIDENCE-BASED VERIFICATION WITH EXPLICIT SCOPE.
+
+STRUCTURED INFORMATION SHARED ACROSS THE PRODUCT LIFECYCLE.
+
+16. CONCLUSION
+
+The PITN identity architecture and ROBOPARTS.ai component information model establish a connected framework for identifying robots, products, and individual physical components.
+
+The HUMANOIDO actuator identity example demonstrates the distinction between robot identity, actuator product identity, persistent component identity, and manufacturer serial number.
+
+The Factory01 passport demonstrations illustrate the presentation of robot identity and associated status information.
+
+The ROBOPARTS.ai data model provides the component, product, robot, BOM, installation, lifecycle, compatibility, and evidence relationships necessary to connect these identity concepts.
+
+Together, these elements establish the architectural foundation for a unified robot and component passport structure.
+
+The manufacturer example demonstrates how one persistent component identity connects engineering, procurement, manufacturing, maintenance, and quality information without treating each department's records as unrelated identities.
+
+The resulting framework connects physical identity with structured digital information throughout the lifecycle of a robot and its components.
+
+PITN provides the overarching identity architecture.
+
+ROBOPARTS.ai provides the robotics component and lifecycle information model.
+
+Digital passports present the connected identity and information relationships.
+
+END OF DOCUMENT
