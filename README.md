@@ -1,958 +1,190 @@
-PITN.ai — RoboParts.ai
-Persistent Digital Identity and Lifecycle Infrastructure for Robotics
+# POWER IN THE NUMBERS (PITN)
 
-Author: Aaron Bailot
-Founder: PITN.ai (Power in the Numbers)
-Project: RoboParts.ai
-Ecosystem: PITN.ai
-Status: Architecture and development documentation
+## Persistent Identity and Blockchain/Web3 Namespace Infrastructure for Robotics and Manufacturing
 
-1. Overview
+**Author:** Aaron Bailot  
+**ORCID:** [0009-0006-2810-6829](https://orcid.org/0009-0006-2810-6829)  
+**Organization:** POWER IN THE NUMBERS (PITN)  
+**Repository status:** Public framework, architecture, and research documentation  
+**Architecture:** PITN umbrella + six complementary initiatives
 
-RoboParts.ai is a physical-component identity and lifecycle infrastructure project within the broader PITN.ai robotics ecosystem.
+**Core principle: CONNECT THE PHYSICAL COMPONENT TO THE INFORMATION THAT ALREADY DESCRIBES IT.**
 
-The project addresses the fragmentation of component identities and records across manufacturers, distributors, original equipment manufacturers (OEMs), system integrators, robotics operators, enterprise systems, and service organizations.
+POWER IN THE NUMBERS (PITN) establishes a shared persistent-identity and blockchain/Web3 namespace infrastructure intended to connect physical components, products, assemblies, robots, and lifecycle events to the information that already describes them.
 
-A physical component may be represented by multiple identifiers throughout its lifecycle, including:
+PITN addresses a recurring problem in robotics and manufacturing: the same physical component can be represented by different identifiers and records across manufacturers, suppliers, OEMs, engineering teams, ERP, PLM, MES, CAD, PDM, quality, inventory, maintenance, and service systems. Those records may describe related aspects of the same product or physical instance without providing a consistent way to connect them.
 
-Manufacturer part numbers
-Distributor SKUs
-OEM bill-of-materials (BOM) references
-ERP material identifiers
-Customer asset identifiers
-Lot numbers
-Serial numbers
-Installation records
-Maintenance work orders
-Replacement records
+PITN's purpose is to provide an identity, namespace, classification, relationship, provenance, and traceability foundation across those information environments. It is designed to complement existing systems of record—not replace them.
 
-These identifiers may refer to the same commercial product, physical component, assembly position, or lifecycle event without providing a consistent relationship between the associated records.
+---
 
-RoboParts.ai is intended to provide a persistent digital identity and relationship layer connecting these records while allowing existing systems of record to retain their respective responsibilities.
+## 1. THE SEVEN-INITIATIVE ARCHITECTURE
 
-The central objective is to establish continuity between physical components and their digital representations across manufacturing, distribution, assembly, installation, operation, maintenance, replacement, refurbishment, and end-of-life processes.
-
-2. Core Principle
-
-A physical component should not be represented solely by the identifier assigned to it in a single database or operational system.
-
-Its digital representation should distinguish between:
-
-Component classification
-Commercial product identity
-Physical-instance identity
-Persistent digital identity
-Source-system identifiers
-Relationships to assemblies and machines
-Lifecycle events
-Provenance and supporting evidence
-Current configuration and status
-Historical configuration and status
+PITN is the umbrella identity and infrastructure foundation supporting six complementary initiatives. Together, these form the seven-initiative architecture; the initiatives are not seven unrelated products.
 
-The identity of a physical component should remain distinguishable from its changing location, ownership, configuration, installation, condition, and lifecycle state.
+| Initiative | Architectural responsibility |
+|---|---|
+| **POWER IN THE NUMBERS (PITN)** | Shared persistent identity, blockchain/Web3 namespace architecture, classification, identity relationships, provenance, and lifecycle traceability foundation. |
+| **ROBOPARTS.ai** | Robotics component and product identity; manufacturer part numbers (MPNs), SKUs, component information, bills of materials (BOMs), sourcing references, compatibility information, and lifecycle relationships. |
+| **ROBOTRONIC.ai** | Robotics engineering and systems integration, interoperability, configuration, and integration concepts, including ROS 2-oriented and simulation-first approaches. |
+| **ROBOTRAITS.ai** | Structured robot characteristics, physical configuration, declared and assessed capabilities, behavioral characteristics, and performance profiles. |
+| **ROBOAGENTIC.ai** | Agent identity, capability discovery, authorization, orchestration, governance, revocation, and execution provenance. |
+| **ROBOASI.ai** | AI and knowledge infrastructure for technical information interpretation, semantic processing, information extraction, classification, and discovery. |
+| **ROBORECYCLE.ai** | Component and asset recovery, inspection, refurbishment, repair, reuse, secondary lifecycle processing, and end-of-life traceability. |
 
-3. PITN.ai Ecosystem
-
-PITN.ai is the broader ecosystem framework connecting digital identity, robotics knowledge, physical infrastructure, and intelligent-agent systems.
-
-The principal architectural relationships are:
-
-text
-PITN.ai
-   |
-   +-- Core Knowledge and Infrastructure
-   |
-   +-- RoboParts.ai
-   |      |
-   |      +-- Component Identity
-   |      +-- Hardware Classification
-   |      +-- Component Relationships
-   |      +-- Lifecycle Traceability
-   |      +-- Digital Component Records
-   |
-   +-- RoboTraits.ai / RoboTraits.com
-   |      |
-   |      +-- Robot Description
-   |      +-- Physical Configuration
-   |      +-- Capabilities
-   |      +-- Personality and Behavior
-   |      +-- Performance Characteristics
-   |
-   +-- RoboAgentic.ai
-          |
-          +-- Intelligent-Agent Implementation
-          +-- Capability-Aware Interaction
-          +-- Task Evaluation
-          +-- Adaptive Behavior
-
-
-These components have distinct conceptual responsibilities and are intended to interoperate.
-
-RoboParts.ai represents the physical-component and lifecycle layer.
-
-RoboTraits provides the structured robot-description and characterization layer.
-
-RoboAgentic.ai provides the intelligent-agent layer.
-
-PITN.ai provides the broader ecosystem and infrastructure framework.
-
-These architectural relationships describe the intended design and do not independently establish that every integration is implemented.
-
-4. Problem Definition
-
-The robotics and manufacturing ecosystem relies on information distributed across multiple organizations and systems.
-
-Typical systems include:
-
-Enterprise Resource Planning (ERP)
-Product Lifecycle Management (PLM)
-Manufacturing Execution Systems (MES)
-Quality Management Systems (QMS)
-Bill-of-materials systems
-Inventory management systems
-Asset management systems
-Maintenance and service systems
-Procurement systems
-Digital-twin platforms
-Robotics software and fleet-management systems
-
-Each system may maintain identifiers and records according to its own data model.
-
-RoboParts.ai is intended to connect references across these systems without requiring a universal replacement database.
-
-The architectural distinction is:
-
-text
-Existing Systems of Record
-          |
-          v
-Source Identifiers and Records
-          |
-          v
-PITN / RoboParts Identity Layer
-          |
-          v
-Resolved Identities and Relationships
-          |
-          v
-Component and Machine Traceability
-          |
-          v
-Lifecycle Retrieval and Analysis
-
-
-Source systems remain authoritative for the operational information they manage unless an explicit integration agreement establishes otherwise.
-
-5. Identity Model
-
-The conceptual identity hierarchy is:
-
-text
-Namespace
-    |
-    v
-Component Classification
-    |
-    v
-Manufacturer
-    |
-    v
-Commercial Product
-    |
-    v
-Physical Component Instance
-    |
-    v
-Assembly / BOM Position
-    |
-    v
-Robot / Machine
-    |
-    v
-Configuration
-    |
-    v
-Lifecycle Events
-    |
-    v
-Digital Representation
-
-
-Each layer represents a distinct identity or relationship context.
-
-5.1 Namespace
-
-A namespace provides an address or classification context for an identity.
-
-PITN.ai has described robotics-oriented namespace concepts, including .actuator and related categories.
-
-Namespace registration, ownership, registry status, operational availability, and applicable rights must be independently verified before any namespace is represented as registered, operational, or controlled by a particular entity.
-
-5.2 Component Classification
-
-A component classification describes what kind of component is being represented.
-
-Examples include:
-
-Actuator
-Encoder
-Torque sensor
-Force sensor
-Safety sensor
-Camera module
-Robot controller
-Battery module
-Power converter
-End effector
-Mechanical interface
-Fastener
-
-A classification identifies a category, not an individual physical component.
-
-5.3 Commercial Product
-
-A commercial product identifies a manufacturer's product definition.
-
-Potential attributes include:
-
-Product identifier
-Manufacturer identifier
-Manufacturer part number
-Product model
-Product revision
-Product category
-Technical specifications
-Compatibility constraints
-Product documentation references
-
-A commercial product identifier does not necessarily identify an individual physical unit.
-
-5.4 Physical Instance
-
-A physical instance represents an individual component or identifiable production unit.
-
-Potential attributes include:
-
-Persistent instance identifier
-Product reference
-Manufacturer identifier
-Serial number
-Lot number
-Manufacturing date
-Identification scheme
-Identification evidence
-Current lifecycle status
+The intended architectural sequence is:
 
-Serial numbers must be interpreted within their applicable issuer or identification scheme. They should not be assumed to be globally unique without supporting rules.
-
-5.5 Digital Identity
-
-A digital identity provides a persistent reference to the corresponding digital record.
-
-It can connect multiple external identifiers to the same product or physical instance while preserving the original identifier values and their issuing systems.
-
-The mapping process must distinguish verified matches from ambiguous, conflicting, or unresolved identifiers.
-
-6. Component Identity Relationships
-
-RoboParts.ai is intended to represent relationships between physical components, commercial products, assemblies, machines, and lifecycle records.
-
-Examples include:
-
-text
-Manufacturer
-    |
-    v
-Commercial Product
-    |
-    v
-Physical Instance
-    |
-    +-- Lot
-    +-- Serial Number
-    +-- Manufacturing Record
-    +-- Inspection Record
-    |
-    v
-Assembly Position
-    |
-    v
-Robot / Machine
-    |
-    +-- Configuration
-    +-- Installation History
-    +-- Maintenance History
-    +-- Replacement History
-    +-- Lifecycle Events
-
-
-Relationships should be represented independently where necessary so that their history, validity, provenance, and corrections can be preserved.
-
-A BOM position identifies a location in an assembly definition. It does not, by itself, establish which physical component is currently installed there.
-
-7. Proposed Core Data Model
-
-The initial reference data model consists of the following conceptual entities.
-
-Entity	Purpose
-ComponentClass	Defines a component category.
-Organization	Represents a manufacturer, distributor, OEM, integrator, operator, or service provider.
-Product	Represents a commercial product definition.
-PhysicalInstance	Represents an individual physical component.
-Robot	Represents a physical robot or machine.
-AssemblyConfiguration	Represents a robot or subsystem configuration.
-BOMPosition	Represents a position in an assembly definition.
-ComponentRelationship	Represents a relationship between identified entities.
-LifecycleEvent	Represents an event affecting an entity or relationship.
-SourceRecordReference	Locates a record in an external system.
-EvidenceReference	Identifies supporting evidence.
-VerificationAssertion	Records a verification method and result.
-
-These entities define the proposed conceptual model. The existence of this documentation does not establish that corresponding database tables, schemas, or APIs have been deployed.
-
-7.1 Identifier Rules
-
-The model distinguishes:
-
-Namespace identifiers from product identifiers.
-Product identifiers from physical-instance identifiers.
-Lot identifiers from serial identifiers.
-BOM positions from installed physical components.
-Digital references from source-system record identifiers.
-Current relationships from historical relationships.
-Recorded claims from verified assertions.
-
-A replacement component receives its own physical-instance identity. Replacing a component must not overwrite the identity or history of the removed component.
-
-7.2 Temporal Relationships
-
-Configuration-dependent relationships should distinguish:
-
-valid_time: When the relationship applied in the physical or operational environment.
-
-recorded_time: When the relationship was entered into the information system.
-
-This distinction supports historical reconstruction when records are entered late or corrected after the corresponding physical event.
-
-8. Lifecycle Event Model
-
-Lifecycle events provide a structured record of changes affecting components, assemblies, robots, and their relationships.
-
-Candidate event types include:
-
-text
-component.manufacture
-component.inspection
-component.shipment
-component.receipt
-component.installation
-component.test
-component.calibration
-component.maintenance
-component.removal
-component.replacement
-component.transfer
-component.decommission
-
-
-A common event structure is intended to provide consistent identity references, timestamps, provenance, and source-record information across event types.
-
-8.1 Common Event Fields
-
-Potential fields include:
-
-schema_version
-event_id
-event_type
-event_time
-recorded_time
-issuer
-subject
-related_entities
-source_record
-payload
-evidence
-integrity
-
-Each event type should have its own validation rules and payload requirements.
-
-8.2 Event Record Example
-
-The following JSON is an illustrative design example, not a verified production record.
-
-json
-{
-  "schema_version": "1.0",
-  "event_id": "urn:pitn:event:EVT-000042",
-  "event_type": "component.installation",
-  "event_time": "2026-09-14T10:30:00Z",
-  "recorded_time": "2026-09-14T10:31:12Z",
-  "issuer": {
-    "organization_id": "ORG-INTEGRATOR-01"
-  },
-  "subject": {
-    "entity_type": "physical_instance",
-    "entity_id": "COMP-ACT-00017"
-  },
-  "related_entities": [
-    {
-      "relationship_type": "installed_in",
-      "entity_type": "robot",
-      "entity_id": "ROBOT-001"
-    },
-    {
-      "relationship_type": "occupies_position",
-      "entity_type": "bom_position",
-      "entity_id": "BOM-LEFT-HIP-ACT"
-    }
-  ],
-  "source_record": {
-    "system_id": "MES-01",
-    "record_id": "INSTALL-WO-0042",
-    "record_type": "installation_work_order"
-  },
-  "payload": {
-    "configuration_id": "ROBOT-001-CFG-2.1",
-    "result": "completed"
-  },
-  "evidence": [],
-  "integrity": {
-    "method": "unspecified",
-    "verification_status": "not_verified"
-  }
-}
-
-
-The event identifies a claimed installation and its references. It does not independently prove that the physical installation occurred.
-
-9. Component Lifecycle
-
-The proposed lifecycle model covers:
-
-text
-Design
-   |
-   v
-Manufacturing
-   |
-   v
-Inspection
-   |
-   v
-Distribution
-   |
-   v
-Inventory
-   |
-   v
-Installation
-   |
-   v
-Operation
-   |
-   v
-Maintenance
-   |
-   v
-Repair / Replacement
-   |
-   v
-Refurbishment
-   |
-   v
-Retirement
-   |
-   v
-Reuse / Recycling / Disposal
-
-
-The digital record can preserve historical information across these stages, subject to applicable access, retention, privacy, and ownership requirements.
-
-A lifecycle event should add to or correct the historical record through documented mechanisms rather than silently replacing previous events.
-
-10. Robot Configuration and Digital Twins
-
-RoboParts.ai can provide the physical-component and relationship layer for a robotic digital twin.
-
-The conceptual structure is:
-
-text
-Physical Robot
-      |
-      v
-Robot Identity
-      |
-      v
-Configuration
-      |
-      +-- Hardware Components
-      +-- Subsystems
-      +-- Sensors
-      +-- Actuators
-      +-- Controllers
-      +-- Power Systems
-      +-- Software References
-      |
-      v
-Digital Twin
-      |
-      +-- Current State
-      +-- Performance
-      +-- Maintenance
-      +-- Service History
-      +-- Configuration History
-      +-- Lifecycle Events
-
-
-A digital twin may represent the physical structure, current configuration, operational state, performance, maintenance history, and lifecycle of a robot.
-
-The accuracy of that representation depends on the quality, timeliness, provenance, and verification status of its underlying records.
-
-10.1 Current State Versus Identity
-
-A robot's operational state is distinct from its persistent identity.
-
-Examples of current states include:
-
-Operational
-Idle
-Charging
-Maintenance
-Fault
-Restricted
-Offline
-Decommissioned
-
-Changes in state do not, by themselves, change the robot's underlying identity.
-
-10.2 Historical Configuration
-
-A robot may have multiple configurations throughout its lifecycle.
-
-For example:
-
-text
-Configuration 1.0
-      |
-      v
-Sensor Replacement
-      |
-      v
-Configuration 1.1
-      |
-      v
-Controller Upgrade
-      |
-      v
-Configuration 2.0
-
-
-Each configuration should reference the applicable component instances and relevant software or firmware versions.
-
-11. RoboTraits and Capability Representation
-
-RoboTraits provides the complementary robot-description and characterization layer within the PITN.ai ecosystem.
-
-Its intended scope includes:
-
-Physical configuration
-Declared capabilities
-Configured capabilities
-Verified capabilities
-Personality configuration
-Behavioral characteristics
-Performance measurements
-Operational constraints
-
-The relationship between physical configuration and capability is:
-
-text
-Physical Components
-       |
-       v
-Robot Configuration
-       |
-       v
-Capability Assessment
-       |
-       v
-RoboTraits Profile
-       |
-       v
-Task Eligibility and Behavior Options
-
-
-A capability should not be treated as currently available merely because it is theoretically possible.
-
-The system should distinguish between designed, configured, available, and verified capabilities.
-
-A hardware change may require updated capability assessments and a new configuration record.
-
-12. RoboAgentic.ai and Adaptive Robotics
-
-RoboAgentic.ai provides the complementary intelligent-agent layer in the conceptual architecture.
-
-An intelligent agent may use robot configuration, capability information, current state, performance history, and applicable safety constraints when evaluating potential actions.
-
-The conceptual interaction loop is:
-
-text
-Task
-  |
-  v
-Observation
-  |
-  v
-Decision
-  |
-  v
-Action
-  |
-  v
-Result
-  |
-  v
-Feedback
-  |
-  v
-Evaluation
-  |
-  v
-Authorized Adjustment
-  |
-  v
-Future Behavior
-
-
-Adaptation may involve software updates, configuration changes, training, user preferences, environmental learning, or hardware upgrades.
-
-Core personality configuration should remain distinguishable from learned preferences and task-specific experience.
-
-The intelligent-agent layer should not treat recorded or theoretical capabilities as permission to bypass physical, operational, or safety constraints.
-
-13. Hardware Changes and Compatibility
-
-Hardware changes may affect a robot's physical configuration and available capabilities.
-
-Examples include:
-
-Motor replacement
-Actuator replacement
-Sensor replacement
-Battery replacement
-Controller upgrade
-Robotic hand replacement
-End-effector change
-Camera upgrade
-Power-system upgrade
-
-The proposed change-management sequence is:
-
-text
-Existing Configuration
-        |
-        v
-Identify Required Change
-        |
-        v
-Determine Component Requirements
-        |
-        v
-Identify Candidate Components
-        |
-        v
-Evaluate Compatibility
-        |
-        v
-Install / Replace Component
-        |
-        v
-Test and Verify
-        |
-        v
-Record New Configuration
-        |
-        v
-Update Digital Representation
-
-
-Compatibility may involve mechanical, electrical, software, communication, power, environmental, control, and safety requirements.
-
-Compatibility should not be inferred solely from a matching category or product description. It requires appropriate technical data and, where necessary, engineering validation.
-
-14. Maintenance and Performance History
-
-Component lifecycle records may include:
-
-Inspection
-Repair
-Replacement
-Calibration
-Preventive maintenance
-Corrective maintenance
-Software updates
-Firmware updates
-Performance tests
-Service events
-
-Potential performance measurements include:
-
-Operating hours
-Cycle count
-Temperature
-Vibration
-Load
-Accuracy
-Reliability
-Task success
-Battery performance
-Failure frequency
-
-These measurements may support lifecycle analysis and predictive-maintenance systems.
-
-Predictive maintenance and failure prediction are potential integrations, not assumed built-in RoboParts.ai capabilities.
-
-The component identity layer can provide structured references to the physical assets and records used by external analytics or maintenance systems.
-
-15. Proposed Retrieval Interfaces
-
-The following interfaces are illustrative designs for the reference implementation.
-
-http
-GET /identities/resolve?scheme=manufacturer-serial&value=...
-GET /components/{instance_id}/events
-GET /robots/{robot_id}/configuration?at_time=...
-GET /lots/{lot_id}/impact
-GET /events/{event_id}/replacement-chain
-
-
-Their intended functions are:
-
-Identity resolution: Resolve an external identifier to a product or physical-instance record and report ambiguity.
-
-Lifecycle retrieval: Retrieve available events and source references associated with a physical component.
-
-Historical configuration: Reconstruct the recorded configuration of a robot at a specified time.
-
-Lot impact analysis: Identify known downstream instances and assemblies associated with a production lot.
-
-Replacement traceability: Reconstruct the relationships between the removed component, replacement component, affected position, and related lifecycle events.
-
-These routes are proposed interfaces. They must not be interpreted as existing or operational endpoints until verified against deployed code and reproducible tests.
-
-16. Proposed Acceptance Tests
-
-The initial reference implementation should support controlled tests with predefined expected results.
-
-Test ID	Test	Expected result
-AT-01	Resolve a known manufacturer part number.	Correct product and revision are returned.
-AT-02	Resolve a known serialized instance.	Correct physical instance and product relationship are returned.
-AT-03	Resolve an ambiguous identifier.	Ambiguity is explicitly reported.
-AT-04	Retrieve component lifecycle history.	Expected available events and source references are returned.
-AT-05	Reconstruct historical robot configuration.	Result matches the reference configuration.
-AT-06	Process a component replacement.	Both physical identities and their histories are preserved.
-AT-07	Perform lot impact analysis.	Expected downstream relationships are returned without unrelated matches.
-AT-08	Request a missing source record.	Missing or inaccessible information is reported.
-AT-09	Submit an invalid event payload.	Validation fails or the record is explicitly marked invalid according to policy.
-AT-10	Alter protected test-record content.	Integrity verification detects the alteration when valid verification material is available.
-AT-11	Attempt unauthorized retrieval.	Access is denied according to the test policy.
-AT-12	Submit an inconsistent replacement relationship.	The inconsistency is detected or explicitly flagged.
-
-A successful API response is not sufficient to establish that the returned traceability chain is correct. Acceptance requires comparison with the known reference dataset.
-
-17. Evidence and Provenance
-
-Project development and lifecycle records should distinguish documented concepts, source records, verified implementation, and unresolved claims.
-
-Recommended evidence fields include:
-
-text
-Evidence ID:
-Related Project:
-Related IP Entry:
-Source:
-Repository / System:
-File / URL / Record:
-Commit / Version:
-Original Date:
-Date Retrieved:
-Description:
-Verification Status:
-Screenshot / Export:
-Related Test:
-
-
-Evidence may include:
-
-GitHub repository history
-Git commits and source files
-Database schemas and migrations
-API definitions and responses
-Technical documentation
-Architecture diagrams
-Original design files
-Prototype demonstrations
-Namespace registration records
-Development records
-Contributor and assignment agreements
-Reproducible test outputs
-
-Historical commits should be preserved. New discoveries and corrections should be documented as separate dated entries rather than by rewriting historical records.
-
-Repository ownership alone does not establish ownership of every contribution or intellectual-property asset.
-
-18. Implementation Status
-
-Project documentation describes the intended architecture and development direction. Actual implementation status must be established from technical evidence.
-
-The following areas require independent verification against the repository, database, APIs, deployment, and available test records:
-
-Persistent identity implementation
-Namespace and classification implementation
-Product and physical-instance data models
-Cross-system identifier mapping
-Component relationship records
-Lifecycle event schemas
-Event validation
-Historical configuration retrieval
-Lot impact analysis
-Replacement traceability
-Evidence and integrity verification
-Access control
-Digital-twin integration
-RoboTraits integration
-RoboAgentic.ai integration
-
-Capabilities without verified supporting evidence should be classified as proposed, partially implemented, or unverified as appropriate.
-
-A completed implementation inventory should identify the relevant repository path, commit or release, endpoint where applicable, sample records, test procedure, and observed result for each claimed capability.
-
-19. Development Roadmap
-
-The proposed development sequence is:
-
-Phase 1 — Repository and Data Inventory
-
-Review source code, schemas, migrations, APIs, documentation, and historical records.
-
-Identify implemented functionality and development gaps.
-
-Phase 2 — Formal Identity and Relationship Model
-
-Define entities, identifier rules, relationship semantics, and temporal behavior.
-
-Phase 3 — Lifecycle Event Model
-
-Define versioned event structures, payload validation, provenance, source references, and correction procedures.
-
-Phase 4 — Retrieval and Reconstruction
-
-Develop and validate identity resolution, lifecycle retrieval, historical configuration, lot impact, and replacement queries.
-
-Phase 5 — Digital-Twin Integration
-
-Connect physical-component records to robot configuration, state, maintenance, and capability descriptions.
-
-Phase 6 — Testing and Evaluation
-
-Execute acceptance tests, measure retrieval completeness and relationship correctness, document limitations, and preserve reproducible evidence.
-
-This roadmap describes proposed development activities. Completion dates and implementation status should be recorded separately as work progresses.
-
-20. Potential Applications
-
-The architecture is intended to support applications across:
-
-Robotics and industrial automation
-Advanced manufacturing
-Component manufacturing and distribution
-OEM engineering and integration
-Fleet operations
-Maintenance and service management
-Automotive and electric vehicles
-Battery and power systems
-Aerospace and complex equipment
-Digital twins
-Asset lifecycle management
-Component compatibility and replacement
-Supply-chain traceability
-Refurbishment and recycling
-
-The applicability of the architecture to a particular industry depends on its data requirements, identity schemes, integration constraints, and operational validation.
-
-21. Intellectual Property and Project Attribution
-
-Project: RoboParts.ai
-Ecosystem: PITN.ai — Power in the Numbers
-Author: Aaron Bailot, Founder, PITN.ai
-
-The project documentation describes the intended relationship between RoboParts.ai and the broader PITN.ai ecosystem.
-
-RoboParts.ai is designated within the project architecture as the physical-component identity and lifecycle infrastructure layer.
-
-RoboTraits.ai, RoboTraits.com, and RoboAgentic.ai are designated as complementary and secondary components intended to interoperate with RoboParts.ai within the PITN.ai ecosystem.
-
-These statements describe the project's intended architecture and attribution. Legal ownership, inventorship, registration status, and enforceable intellectual-property rights must be established through the relevant records, agreements, registrations, and applicable law.
-
-22. Long-Term Objective
-
-The long-term objective is to connect the physical robotics economy through persistent component identities, structured relationships, and lifecycle records.
-
-The intended traceability chain is:
-
-text
-PART
-  |
-  v
-PRODUCT
-  |
-  v
-PHYSICAL COMPONENT
-  |
-  v
-SUBSYSTEM / ASSEMBLY
-  |
-  v
-ROBOT / MACHINE
-  |
-  v
-DIGITAL TWIN
-  |
-  v
-CONFIGURATION AND CAPABILITIES
-  |
-  v
-OPERATION
-  |
-  v
-MAINTENANCE
-  |
-  v
-UPGRADE / REPLACEMENT
-  |
-  v
-RETIREMENT / REUSE / RECYCLING
-
-
-The architecture is intended to preserve continuity as components move between organizations, systems, machines, configurations, and lifecycle stages.
-
-23. Core Definition
-
-RoboParts.ai is a proposed persistent digital identity and lifecycle infrastructure layer for physical robotics components and their relationships to products, assemblies, robots, machines, organizations, and operational records.
-
-Within the PITN.ai ecosystem:
-
-PITN.ai provides the broader knowledge and infrastructure framework.
-RoboParts.ai represents physical components, identities, relationships, and lifecycle information.
-RoboTraits describes robot characteristics, configuration, capabilities, behavior, and performance.
-RoboAgentic.ai provides the complementary intelligent-agent implementation layer.
-Digital twins connect these representations to the robot's physical configuration, operational state, and lifecycle history.
-
-The immediate technical objective is to establish a verified implementation baseline and develop a reproducible reference implementation for component identity resolution, lifecycle retrieval, historical configuration reconstruction, and replacement traceability.
-
-The long-term objective is an interoperable identity framework connecting digital representations to the physical robotics ecosystem throughout the lifecycle of its components and machines.
-
-PITN.ai — Power in the Numbers
-RoboParts.ai — Persistent Identity for the Physical Robotics Economy
-
-This README describes project concepts, intended architecture, and proposed development. It does not assert that every described capability has been implemented, independently verified, or legally protected.
+**Physical Components → Digital Identity → Capabilities → Robots → Intelligence → Tasks → Applications**
+
+The shared identity foundation allows the initiatives to exchange structured references while retaining their distinct responsibilities. The existence of an architectural relationship does not, by itself, mean every integration or service is deployed.
+
+## 2. THE IDENTITY AND INFORMATION PROBLEM
+
+A physical component may be referenced through several identifiers during its lifecycle, including:
+
+- Manufacturer name and manufacturer part number (MPN).
+- Distributor stock keeping unit (SKU).
+- Product model and revision.
+- ERP material number.
+- PLM, CAD, or PDM object reference.
+- Engineering or manufacturing BOM position.
+- Lot and serial number.
+- Supplier, OEM, or customer asset identifier.
+- Installation, inspection, maintenance, repair, and replacement records.
+
+These identifiers are not interchangeable. A product model identifies a product definition; a serial number or other qualified identifier may identify an individual physical unit; a BOM position identifies a place in a product or assembly definition. PITN's identity model is intended to preserve these distinctions and connect the associated records with their issuing source and context.
+
+The architecture is intended to support:
+
+- Persistent digital references for products, physical instances, robots, and other entities.
+- Namespace-based classification and identity organization.
+- Relationships among manufacturers, products, components, assemblies, BOM positions, and robots.
+- Preservation of original identifiers and source-system authority.
+- Provenance and references to supporting documentation or evidence.
+- Lifecycle history, including installation, inspection, maintenance, replacement, recovery, and retirement.
+- Resolution of known, ambiguous, conflicting, or unverified identity references without silently treating uncertain matches as facts.
+
+PITN does not make an unsupported source record authoritative, prove a physical object's authenticity, certify a component, or establish technical compatibility merely by assigning or registering a digital identity.
+
+## 3. BLOCKCHAIN/WEB3 NAMESPACE ARCHITECTURE
+
+Blockchain/Web3 namespaces are a foundational part of the PITN architecture. They provide a namespace layer for organizing and referencing identity and classification domains across the robotics and manufacturing ecosystem.
+
+The architecture includes robotics-oriented component and system categories such as actuators, reducers, fasteners, encoders, sensors, controllers, batteries, vision modules, end effectors, robotic hands, robotic legs, and complete robot systems.
+
+### Namespace-count consistency
+
+The current PITN architecture is described by the project as a **34-namespace architecture**. An earlier document in this repository, `PITN.txt`, describes a **proposed 27-namespace taxonomy**. These are different document versions/counts and are not to be added together.
+
+The repository's legacy 27-entry taxonomy has not yet been reconciled item-by-item against the current 34-namespace architecture. Accordingly, this README uses 34 as the current project-level architecture designation while identifying the 27-entry taxonomy as legacy documentation pending a definitive crosswalk. It does not claim that the 27 are necessarily a subset of the 34, or that all 34 namespace registrations are active, deployed, or controlled by PITN.
+
+Namespace registration, ownership, registrar arrangements, pricing, availability, operational status, and applicable rights must be verified against the relevant registry and contractual records before a specific namespace is represented as registered, active, or controlled by a particular party.
+
+A namespace establishes an identity or classification context. It does not by itself verify the physical component, its manufacturer, its provenance, its certification, or its compatibility.
+
+## 4. THE ROBOPARTS.ai COMPONENT IDENTITY MODEL
+
+ROBOPARTS.ai applies the PITN identity foundation to robotics components and manufacturing information.
+
+The conceptual model distinguishes:
+
+1. **Namespace and classification** — the category or identity context.
+2. **Manufacturer and organization** — the entity issuing or supplying product information.
+3. **Product identity** — the manufacturer's defined product or model, including applicable part number and revision.
+4. **Physical-instance identity** — the individual manufactured component, where uniquely identifiable.
+5. **Assembly and BOM relationship** — the product-definition position and, separately, the physical installation relationship.
+6. **Robot identity and configuration** — the machine and its applicable configuration.
+7. **Lifecycle events and evidence** — recorded events, source references, and supporting information.
+
+For example, a robot asset, an actuator product model, an individual actuator instance, and the manufacturer's serial number are separate identifiers. The data model connects them without treating them as equivalent.
+
+ROBOPARTS.ai is the component-information and lifecycle application of the PITN framework. The repository documents the architecture and its intended data relationships. Publicly visible pilot or demonstration material should be understood according to its stated status; a demonstration is not evidence that every proposed API, registry, integration, or verification mechanism is in production.
+
+## 5. RELATIONSHIP TO EXISTING MANUFACTURING SYSTEMS
+
+PITN is intended to work alongside existing systems, including:
+
+- Enterprise Resource Planning (ERP).
+- Product Lifecycle Management (PLM).
+- Manufacturing Execution Systems (MES).
+- Computer-Aided Design (CAD) and Product Data Management (PDM).
+- Quality Management Systems (QMS).
+- Inventory, warehouse, procurement, and supplier systems.
+- Maintenance, service, and asset-management platforms.
+- Robotics software, fleet-management, and digital-twin environments.
+
+The intended relationship is an identity and information-connection layer: existing systems continue to manage the records and processes for which they are authoritative, while PITN provides persistent references and relationships across those environments. Any live connection requires a defined integration, access permissions, data contracts, and validation.
+
+## 6. ARCHITECTURE, PROTOTYPE, PILOT, AND PRODUCTION STATUS
+
+The repository contains framework descriptions, technical architecture, illustrative data models, economic scenarios, and application-related source files. These materials have different evidence and implementation statuses and should not be conflated.
+
+| Area | What this repository supports | What is not established by this README or repository documentation alone |
+|---|---|---|
+| PITN framework | Documented identity, namespace, relationship, provenance, and traceability architecture. | That every described capability is deployed as a production service. |
+| Blockchain/Web3 namespaces | A project-level 34-namespace architecture designation and related namespace concepts. | That every namespace is registered, active, available, or independently verified. |
+| ROBOPARTS.ai | Component identity and lifecycle architecture, with associated pilot and demonstration materials. | That every manufacturer, supplier, ERP/PLM/MES, or external registry integration is live and validated. |
+| Digital passports and scanning | Publicly referenced demonstration pages and documented passport concepts. | Live blockchain verification or production-grade physical authentication. The Factory01 passport demonstration has been described as a demonstration and not live blockchain verification. |
+| Website and application source | The repository contains `app.js` and an `app/` source directory. | A successful build, deployment, runtime, test suite, or production application. |
+
+### Website/application functionality: not validated
+
+**The website and application code in this repository have not been validated as a functioning, deployable application.** The repository's root does not contain a `package.json`; `app.js` imports Express, and the `app/` directory contains Next.js-oriented source. The previous `.github/workflows/nextjs.yml` deployment workflow has been removed. No active deployment workflow is represented as part of the current repository setup.
+
+Consequently, this repository should presently be treated as a public framework, architecture, and documentation repository—not as a verified software release or a confirmed working website deployment. No claim is made here that the application builds, starts, passes tests, or deploys successfully. Those outcomes require a separately defined and tested application setup.
+
+The workflow removal means the obsolete Next.js deployment attempt is no longer configured through that deleted workflow; it does not itself validate or repair the application source.
+
+## 7. ECONOMIC ANALYSIS AND EVIDENCE DISCIPLINE
+
+The repository includes manufacturer-facing economic analyses and illustrative case studies concerning information retrieval, identity reconciliation, component traceability, and potential reductions in repetitive information work.
+
+All modeled savings, labor rates, software expenditures, registration prices, revenue participation, and manufacturer scenarios must be read with the assumptions and qualifications in the individual source documents. Illustrative calculations are not measured customer outcomes, audited industry averages, guaranteed savings, or customer commitments.
+
+In particular:
+
+- Task-level savings and broader annual information-work scenarios are separate models and must not be added together unless a documented model explicitly supports that calculation.
+- Hypothetical software expenditure is not automatically a PITN saving or a verified market average.
+- Registration pricing and any namespace-owner revenue participation depend on actual pricing, eligibility, and applicable agreements.
+- A blockchain transaction or namespace registration is not proof of physical authenticity, manufacturer authorization, certification, technical accuracy, or compatibility.
+
+Primary economic document: [PITN Universal Manufacturer Economic, Persistent Identity, Blockchain Namespace and Commercial Value Analysis](./PITN_UNIVERSAL_MANUFACTURER_ECONOMIC_AND_COMMERCIAL_ANALYSIS.md).
+
+Related case study: [How POWER IN THE NUMBERS Can Reduce Robotics Information Costs](./costsavings.md).
+
+## 8. REPOSITORY CONTENTS
+
+Key documents currently maintained in this repository include:
+
+- [`PITN.txt`](./PITN.txt) — foundational PITN material, including the earlier proposed 27-namespace taxonomy; treat its count as legacy pending reconciliation with the current 34-namespace architecture.
+- [`PITN_UNIVERSAL_MANUFACTURER_ECONOMIC_AND_COMMERCIAL_ANALYSIS.md`](./PITN_UNIVERSAL_MANUFACTURER_ECONOMIC_AND_COMMERCIAL_ANALYSIS.md) — consolidated manufacturer, economic, identity, blockchain namespace, and commercial analysis.
+- [`PITN_DIGITAL_IDENTITY_COMPONENT_PASSPORT_AND_ROBOTICS_TRACEABILITY_ARCHITECTURE.txt`](./PITN_DIGITAL_IDENTITY_COMPONENT_PASSPORT_AND_ROBOTICS_TRACEABILITY_ARCHITECTURE.txt) — digital identity, component passport, BOM, and robotics traceability architecture.
+- [`costsavings.md`](./costsavings.md) — illustrative robotics information-cost case study.
+- [`docs/`](./docs/) — supporting architecture and review documentation.
+- [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) — website and discoverability planning material.
+- [`app.js`](./app.js) and [`app/`](./app/) — application-related source files; not currently certified as buildable or deployable.
+
+## 9. PUBLIC PROJECT REFERENCES
+
+The following are project reference links, not assertions that each service or demonstration has passed a current operational test:
+
+- [POWER IN THE NUMBERS](https://powerinthenumbers.ai/)
+- [ROBOPARTS.ai](https://roboparts.ai/)
+- [ROBOTRAITS](https://powerinthenumbers.ai/robotraits)
+- [Humanoids.select](https://humanoids.select/)
+- [PITN Factory01 passport demonstration](https://powerinthenumbers.ai/passport/factory01)
+- [PITN identity and scanning demonstration](https://powerinthenumbers.ai/identity#scan)
+- [Research publication: Beyond the Machine — Building the Infrastructure That Connects Robotics](https://zenodo.org/records/24168975)
+- [DOI: 10.5281/zenodo.24168975](https://doi.org/10.5281/zenodo.24168975)
+
+## 10. INTENDED SCOPE
+
+PITN is intended to establish a shared identity and information foundation for robotics and manufacturing: connecting physical components to their product definitions, manufacturers, identifiers, assemblies, robots, capabilities, lifecycle records, and supporting information.
+
+It is designed to preserve the roles of existing systems while making identity relationships more consistent, persistent, and traceable across organizational and technical boundaries.
+
+The seven initiatives provide complementary areas of application built around that shared foundation.
+
+**POWER IN THE NUMBERS (PITN)**  
+**Author: Aaron Bailot**  
+**ORCID: 0009-0006-2810-6829**
